@@ -1,0 +1,33 @@
+.wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns:  100px 100px 100px 100px 100px 100px 100px 100px 20px;
+      grid-template-columns:  100px 100px 100px 100px 100px 100px 100px 100px 20px;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  margin: 20px;
+}
+
+.one312{
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+}
+
+.four612{
+  grid-column: 4 / 6;
+  grid-row: 1 / 2;
+}
+
+.three412 {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+.three712 {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 4;
+  grid-column: 3 / 7;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+}
