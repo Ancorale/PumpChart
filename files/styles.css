@@ -28,10 +28,6 @@ button {
   border: 1px solid;
 }
 
-.container{
-text-align: center;
-}
-
 div{
   display: inline-block;
 }
@@ -52,6 +48,10 @@ div{
   font-weight: 700;
 }
 
+hr {
+  background-color: #000;
+}
+
 .mt15 {
   margin-top: 15px;
 }
@@ -66,4 +66,10 @@ div{
 
 .tar {
   text-align: right;
+}
+
+#EP, #NP, #FL, #SA, #EL {
+  color: #fff;
+  background-color: #777;
+  padding: 3px 8px;
 }

@@ -18,9 +18,32 @@
     <span class="heading-primary-sub tac">Engine Pump Calculator</span>
   </h1>
   <hr>
-
-  <div class="container">
-    <div class="one312">
+  <div class="container-fluid tac">
+    <div class="dropdown">
+      <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonGPM" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        GPM
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonHS">
+        <a class="dropdown-item" id="five0">50 GPM</a>
+        <a class="dropdown-item" id="seven0">70 GPM</a>
+        <a class="dropdown-item" id="nine5">95 GPM</a>
+        <a class="dropdown-item" id="one25">125 GPM</a>
+        <a class="dropdown-item" id="one50">150 GPM</a>
+        <a class="dropdown-item" id="two00">200 GPM</a>
+        <a class="dropdown-item" id="two50">250 GPM</a>
+      </div>
+      
+    </div>
+    <div class="dropdown">
+      <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonHS" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Hose Size
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonGPM">
+        <a class="dropdown-item" id="one34">&plus; 50&quot; of 1&frac34;&quot;</a>
+        <a class="dropdown-item" id="two12">&plus; 50&quot; of 2&frac12;&quot;</a>
+        <a class="dropdown-item" id="five">&plus; 100&quot; of 5&quot;</a>
+      </div>
+    </div>
       <div class="dropdown">
         <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonPC" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Pressure<br>Constants
@@ -36,17 +59,11 @@
           <a class="dropdown-item" id="highRise">&plus; 360 PSI Max High Rise Pumping</a>
         </div>
       </div>
-    </div>
-
-    <div class="three412">
       <div class="dropdown">
         <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonFL" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Friction Loss<br>Constants
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonFL">
-          <a class="dropdown-item" id="one34">&plus; 50&quot; of 1&frac34;&quot;</a>
-          <a class="dropdown-item" id="two12">&plus; 50&quot; of 2&frac12;&quot;</a>
-          <a class="dropdown-item" id="five">&plus; 100&quot; of 5&quot;</a>
           <a class="dropdown-item" id="elUp">&plus; ELEVATION UP&colon; &plus; 5 PSI per floor &lpar;&minus;1<sup>st</sup>&rpar;</a>
           <a class="dropdown-item" id="elDn">&plus; ELEVATION DOWN&colon; &minus; 5 PSI per floor</a>
           <a class="dropdown-item" id="appl">&plus; 10 PSI Appliances flowing &#8805; 350gpm</a>
@@ -55,43 +72,21 @@
           <a class="dropdown-item" id="bliz">&plus; 20 PSI Blitzfire Monitor</a>
         </div>
       </div>
-    </div>
 
-    <div class="four612 asc">
-      <div class="dropdown">
-        <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonGPM" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          GPM
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonGPM">
-          <a class="dropdown-item" id="five0">50 GPM</a>
-          <a class="dropdown-item" id="seven0">70 GPM</a>
-          <a class="dropdown-item" id="nine5">95 GPM</a>
-          <a class="dropdown-item" id="one25">125 GPM</a>
-          <a class="dropdown-item" id="one50">150 GPM</a>
-          <a class="dropdown-item" id="two00">200 GPM</a>
-          <a class="dropdown-item" id="two50">250 GPM</a>
-        </div>
-      </div>
-    </div>
 
-  </div>
+    </div>
 
   <hr>
-
-  <form target="_self" class="tac">
-    <input type="text" id="NP" placeholder="NP" class="tac" size="3">
-
-    <input type="text" id="FL" placeholder="FL" class="tac" size="3">
-
-    <input type="text" id="SA" placeholder="SA" class="tac" size="3">
-
-    <input type="text" id="EL" placeholder="EL" class="tac" size="3">
-    <hr>
-    <button class="btn btn-success" type="button">Total</button>
-    <hr>
-
-    <p id="result" class="tac">Engine Pressure</p>
-  </form>
+  <p id="whats" class="tac">Items</p>
+  <hr>
+  <div class="container-fluid tac">
+    Engine Pressure
+  <div id="EP" class="tac bor1s">EP</div>
+  </div>
+  <hr>
+  <div class="container-fluid tac">
+  <button class="btn btn-secondary" onclick="location.reload(true)">Reset</button>
+  </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
