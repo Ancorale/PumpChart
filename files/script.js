@@ -36,7 +36,6 @@ $(document).ready(function() {
       dad = $(this).parent().prev().prop('id');
     drpDnItmVal.push(thisDrpDnItmVal + "<br>");
     let press;
-    console.log()
     console.log(drpDnItm);
 
     if (dad == 'dropdownMenuButtonPC') {
@@ -47,7 +46,7 @@ $(document).ready(function() {
 
         }
       }
-    }
+    };
 
     if (dad == 'dropdownMenuButtonFL') {
       console.log(dad);
@@ -57,7 +56,7 @@ $(document).ready(function() {
           console.log(lossConst);
         }
       }
-    }
+    };
 
     if (dad == 'dropdownMenuButtonHS') {
       console.log(dad);
@@ -73,15 +72,16 @@ $(document).ready(function() {
           }
         }
       }
-    }
+    };
 
     if (dad == 'dropdownMenuButtonGPM') {
       GPM = thisDrpDnItmVal.replace(/GPM/, '');
       console.log(GPM);
 
-    }
+    };
+    console.log(hoseLength);
 
-    frictionLoss = Coefficient * (+GPM / 100)^2 * (hoseLength / 100);
+    frictionLoss = Coefficient * (+GPM / 100)^2 * (+hoseLength / 100);
     console.log(frictionLoss, Coefficient, hoseLength);
     engPress += press;
     $('#EP').html(engPress);
