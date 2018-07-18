@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  const presConst = {
+  const preConst = {
       masStr: 80,
       smBorHan: 50,
       fogNoz: 100,
@@ -7,9 +7,7 @@ $(document).ready(function() {
       stanPipWo: 200,
       relPum: 100,
       aptLoad: 140,
-      highRise: 360
-    },
-    lossConst = {
+      highRise: 360,
       elup: 5,
       elDn: -5,
       appl: 10,
@@ -17,17 +15,22 @@ $(document).ready(function() {
       monDek: 25,
       bliz: 20
     },
-    hose = {
+    coeff = {
       one34: 12,
+      one341: 12,
       two12: 2,
-      five: .08
+      two121: 2,
+      five: .08,
+      siam: .5,
+      triam: .22
     };
   let drpDnItmVal = [],
     total = 0,
     engPress = 0,
     hoseLength = 0,
-    Coefficient = 0,
+    coefficient = 0,
     frictionLoss = 0,
+    press = 0,
     GPM = '';
 
   $('.dropdown-item').on('click', function() {
@@ -35,66 +38,44 @@ $(document).ready(function() {
       thisDrpDnItmVal = $(this).html(),
       dad = $(this).parent().prev().prop('id');
     drpDnItmVal.push(thisDrpDnItmVal + "<br>");
-    let press;
-    console.log(drpDnItm);
 
-    if (dad == 'dropdownMenuButtonPC') {
-      console.log(dad);
-      for (key in presConst) {
+      for (key in preConst) {
         if (drpDnItm == key) {
-          press = presConst[key];
-
+          press = preConst[key];
         }
       }
-    };
 
-    if (dad == 'dropdownMenuButtonFL') {
-      console.log(dad);
-      for (key in lossConst) {
+      for (key in coeff) {
         if (drpDnItm == key) {
-          press = lossConst[key];
-          console.log(lossConst);
-        }
-      }
-    };
-
-    if (dad == 'dropdownMenuButtonHS') {
-      console.log(dad);
-      for (key in hose) {
-        if (drpDnItm == key) {
-          Coefficient = hose[key];
-          console.log(Coefficient);
+          coefficient = coeff[key];
+          console.log(coefficient);
           if (key == 'one34' || key == 'two12') {
             hoseLength += 50;
-            console.log(hoseLength);
-          } else if (key == 'five') {
+          } else {
             hoseLength += 100;
           }
         }
       }
-    };
+
 
     if (dad == 'dropdownMenuButtonGPM') {
       GPM = thisDrpDnItmVal.replace(/GPM/, '');
-      console.log(GPM);
+      GPM = +GPM;
+    }
 
-    };
-    console.log(hoseLength);
+    function fricLoss(a, b, c) {
+      let d = a * Math.pow((b / 100), 2) * c / 100;
+      return Math.ceil(d);
+    }
+    frictionLoss = fricLoss(coefficient,GPM,hoseLength);
 
-    frictionLoss = Coefficient * (+GPM / 100)^2 * (+hoseLength / 100);
-    console.log(frictionLoss, Coefficient, hoseLength);
     engPress += press;
-    $('#EP').html(engPress);
+
+    $('#FL').html('FL ' + frictionLoss);
+    $('#HL').html(hoseLength);
+    $('#gpm').html(GPM + ' GPM');
+    $('#EP').html(Math.ceil(engPress + frictionLoss));
     $('#whats').html(drpDnItmVal);
-
-
   });
 
 });
-/*FL = C * (Q / 100) ^2 * L / 100
-
-FL = Friction loss in PSI
-C = Friction loss Coefficient
-Q = Flow rate in GPM
-L = Hose length
-*/

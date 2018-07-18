@@ -28,7 +28,13 @@ button {
   border: 1px solid;
 }
 
-div{
+.boxRad {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+div {
   display: inline-block;
 }
 
@@ -68,8 +74,10 @@ hr {
   text-align: right;
 }
 
-#EP, #NP, #FL, #SA, #EL {
+#EP, #NP, #SA, #EL, #HL, #FL, #gpm {
   color: #fff;
-  background-color: #777;
+  background-color: #6c757d;
   padding: 3px 8px;
+  font-weight: 100;
+  font-size: 14px;
 }
