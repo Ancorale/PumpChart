@@ -31,6 +31,7 @@
         <a class="dropdown-item" id="five">&plus; 100&quot; of 5&quot;</a>
       </div>
     </div>
+
     <div class="dropdown">
       <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonGPM" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         GPM
@@ -47,68 +48,75 @@
 
     </div>
     <br>
-      <div class="dropdown">
-        <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonNP" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="dropdown">
+      <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonNP" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Nozzle<br>Pressure
         </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" id="masStr">&plus; 80 PSI NP Master Stream &lpar;tip &#8805; 1&frac38;&quot;&rpar;</a>
-          <a class="dropdown-item" id="smBorHan">&plus; 50 PSI NP SB Handline &lpar;tip &#8804; 1&frac14;&quot;&rpar;</a>
-          <a class="dropdown-item" id="fogNoz">&plus; 100 PSI NP Fog Nozzles</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" id="masStr">&plus; 80 PSI NP Master Stream &lpar;tip &#8805; 1&frac38;&quot;&rpar;</a>
+        <a class="dropdown-item" id="smBorHan">&plus; 50 PSI NP SB Handline &lpar;tip &#8804; 1&frac14;&quot;&rpar;</a>
+        <a class="dropdown-item" id="fogNoz">&plus; 100 PSI NP Fog Nozzles</a>
 
-        </div>
       </div>
+    </div>
+    <br>
+    <div id="FL" class="tac bor1s boxRad">Friction<br>Loss</div>
+    <br><br>
 
-      <div id="FL" class="tac bor1s boxRad">Friction<br>Loss</div>
-      <div class="dropleft">
-        <div class="dropdown">
-          <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonSA" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="dropdown">
+      <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonSA" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Special<br>Appliances
           </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" id="appl">&plus; 10 PSI Appliances flowing &#8805; 350gpm</a>
-            <a class="dropdown-item" id="bliz">&plus; 20 PSI Blitzfire Monitor</a>
-            <a class="dropdown-item" id="stanPip">&plus; 25 PSI Standpipe System</a>
-            <a class="dropdown-item" id="monDek">&plus; 25 PSI Ground Monitor/Deck Gun</a>
-            <a class="dropdown-item" id="relPum">&plus; 100 PSI Begins Relay Pumping</a>
-            <a class="dropdown-item" id="sprink">&plus; 150 PSI Sprinklers w&sol;o pump</a>
-            <a class="dropdown-item" id="aptLoad">&plus; 140 PSI Apt. Load Deploy to WYE</a>
-            <a class="dropdown-item" id="stanPipWo">&plus; 200 PSI Max Standpipe w&sol;o Pump</a>
-            <a class="dropdown-item" id="highRise">&plus; 360 PSI Max High Rise Pumping</a>
-            <a class="dropdown-item" id="siam">&plus; Siamese &lpar;2&rpar; 2&frac12;</a>
-            <a class="dropdown-item" id="triam">&plus; Triamese &lpar;3&rpar; 2&frac12;</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonFL" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <div class="dropdown-menu">
+        <a class="dropdown-item" id="appl">&plus; 10 PSI Appliances flowing &#8805; 350gpm</a>
+        <a class="dropdown-item" id="bliz">&plus; 20 PSI Blitzfire Monitor</a>
+        <a class="dropdown-item" id="stanPip">&plus; 25 PSI Standpipe System</a>
+        <a class="dropdown-item" id="monDek">&plus; 25 PSI Ground Monitor/Deck Gun</a>
+        <a class="dropdown-item" id="siam">&plus; Siamese &lpar;2&rpar; 2&frac12;</a>
+        <a class="dropdown-item" id="triam">&plus; Triamese &lpar;3&rpar; 2&frac12;</a>
+      </div>
+    </div>
+    <br>
+    <div class="dropdown">
+      <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonEL" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Elevation
           </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" id="elUp">&plus; ELEVATION UP&colon; &plus; 5 PSI per floor &lpar;&minus;1<sup>st</sup>&rpar;</a>
-            <a class="dropdown-item" id="elUp10">&plus; ELEVATION UP 10 floors&colon; &plus; 50 PSI</a>
-            <a class="dropdown-item" id="elDn">&plus; ELEVATION DOWN&colon; &minus; 5 PSI per floor</a>
-          </div>
-        </div>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" id="elUp">&plus; ELEVATION UP&colon; &plus; 5 PSI per floor &lpar;&minus;1<sup>st</sup>&rpar;</a>
+        <a class="dropdown-item" id="elUp10">&plus; ELEVATION UP 10 floors&colon; &plus; 50 PSI</a>
+        <a class="dropdown-item" id="elDn">&plus; ELEVATION DOWN&colon; &minus; 5 PSI per floor</a>
       </div>
-
-
     </div>
+    <br>
+    <div class="dropdown">
+      <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonPC" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pressure<br>Constants</button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" id="relPum">&plus; 100 PSI Begins Relay Pumping</a>
+        <a class="dropdown-item" id="aptLoad">&plus; 140 PSI Apt. Load Deploy to WYE</a>
+        <a class="dropdown-item" id="sprink">&plus; 150 PSI Sprinklers w&sol;o pump</a>
+        <a class="dropdown-item" id="stanPipWo">200 PSI Max Standpipe w&sol;o Pump</a>
+        <a class="dropdown-item" id="highRise">360 PSI Max High Rise Pumping</a>
+      </div>
+    </div>
+
+
+
+  </div>
 
   <hr>
   <p id="whats" class="tac">Items</p>
   <hr>
   <div class="container-fluid tac">
     Total Hose length
-  <div id="HL" class="tac bor1s boxRad">HL</div>
-  at
-  <div id="gpm" class="tac bor1s boxRad">GPM</div>
-  <br><br>
-    Engine Pressure
-  <div id="EP" class="tac bor1s boxRad">EP</div>
+    <div id="HL" class="tac bor1s boxRad">HL</div>
+    at
+    <div id="gpm" class="tac bor1s boxRad">GPM</div>
+    <br><br> Engine Pressure
+    <div id="EP" class="tac bor1s boxRad">EP</div>
   </div>
   <hr>
   <div class="container-fluid tac">
-  <button class="btn btn-secondary" onclick="location.reload(true)">Reset</button>
+    <button class="btn btn-secondary" onclick="location.reload(true)">Reset</button>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

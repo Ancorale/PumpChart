@@ -37,7 +37,17 @@ $(document).ready(function() {
     let drpDnItm = $(this).prop('id'),
       thisDrpDnItmVal = $(this).html(),
       dad = $(this).parent().prev().prop('id');
+      console.log(drpDnItm);
     drpDnItmVal.push(thisDrpDnItmVal + "<br>");
+
+    switch (drpDnItm) {
+      case "stanPipWo":
+        $('#EP').html("200 PSI Max Standpipe w&sol;o Pump");
+        break;
+      case 'highRise':
+        $('#EP').html("360 PSI Max High Rise Pumping");
+        break;
+      default:
 
       for (key in preConst) {
         if (drpDnItm == key) {
@@ -76,6 +86,9 @@ $(document).ready(function() {
     $('#gpm').html(GPM + ' GPM');
     $('#EP').html(Math.ceil(engPress + frictionLoss));
     $('#whats').html(drpDnItmVal);
+
+}
+
   });
 
 });
