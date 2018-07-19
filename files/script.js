@@ -39,7 +39,15 @@ $(document).ready(function() {
       dad = $(this).parent().prev().prop('id');
       console.log(drpDnItm);
     drpDnItmVal.push(thisDrpDnItmVal + "<br>");
+    /*
+    switch (dad) {
+      case "dropdownMenuButtonNP":
+        $('#dropdownMenuButtonNP').html("choose");
+        break;
+      default:
 
+    }
+*/
     switch (drpDnItm) {
       case "stanPipWo":
         $('#EP').html("200 PSI Max Standpipe w&sol;o Pump");
@@ -47,6 +55,7 @@ $(document).ready(function() {
       case 'highRise':
         $('#EP').html("360 PSI Max High Rise Pumping");
         break;
+
       default:
 
       for (key in preConst) {
@@ -55,11 +64,11 @@ $(document).ready(function() {
         }
       }
 
-      for (key in coeff) {
-        if (drpDnItm == key) {
-          coefficient = coeff[key];
+      for (keyc in coeff) {
+        if (drpDnItm == keyc) {
+          coefficient = coeff[keyc];
           console.log(coefficient);
-          if (key == 'one34' || key == 'two12') {
+          if (keyc == 'one34' || keyc == 'two12') {
             hoseLength += 50;
           } else {
             hoseLength += 100;
@@ -73,9 +82,9 @@ $(document).ready(function() {
       GPM = +GPM;
     }
 
-    function fricLoss(a, b, c) {
-      let d = a * Math.pow((b / 100), 2) * c / 100;
-      return Math.ceil(d);
+    function fricLoss(C, Q, L) {
+      let FL = C * Math.pow((Q / 100), 2) * L / 100;
+      return Math.ceil(FL);
     }
     frictionLoss = fricLoss(coefficient,GPM,hoseLength);
 
