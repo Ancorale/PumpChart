@@ -43,12 +43,14 @@ div {
 }
 
 .heading-primary-main {
+  color: #00f;
   display: block;
   font-size: 24px;
   font-weight: 400;
 }
 
 .heading-primary-sub {
+  color: #00f;
   display: block;
   font-size: 16px;
   font-weight: 700;
@@ -74,10 +76,59 @@ hr {
   text-align: right;
 }
 
+#top{
+  background-color: #ff0;
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid;
+}
+
 #EP, #NP, #SA, #EL, #HL, #FL, #gpm {
   color: #fff;
   background-color: #6c757d;
   padding: 3px 8px;
   font-weight: normal;
   font-size: 14px;
+}
+/*
+#EP {
+  background-color: #0f0;
+  color: #000;
+}
+*/
+#FL{
+  color: #cfc;
+}
+
+#reset{
+  background-color: #f00;
+}
+
+.flashRed {
+  -webkit-animation: flashRed 2s infinite;
+  animation: flashRed 2s infinite;
+}
+
+@-webkit-keyframes flashRed {
+  0%, 100% {
+    color: #000;
+  }
+  25%, 75% {
+    color: #fff;
+  }
+  50% {
+    color: #000;
+  }
+}
+
+@keyframes flashRed {
+  0%, 100% {
+    color: #000;
+  }
+  25%, 75% {
+    color: #fff;
+  }
+  50% {
+    color: #000;
+  }
 }

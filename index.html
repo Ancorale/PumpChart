@@ -14,11 +14,15 @@
 </head>
 
 <body>
-  <h1 class="heading-primary mt15">
-    <span class="heading-primary-main tac">Clark County Fire Department</span>
-    <span class="heading-primary-sub tac">Engine Pump Calculator</span>
-  </h1>
-  <hr>
+<div id="top" class="tac">
+    <h1 class="heading-primary">
+
+      <span class="heading-primary-main tac">Clark County Fire Department</span>
+      <span class="heading-primary-sub tac">Engine Pump Calculator</span>
+    </h1>
+  </div>
+  <br>
+
   <div class="container-fluid tac">
     <div class="dropdown">
       <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonNP" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,12 +39,19 @@
       <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonHS" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Hose Size
       </button>
-      <div class="dropdown-menu tac">
-        <a class="dropdown-item" id="one34">&plus; 50&quot; of 1&frac34;&quot;</a>
-        <a class="dropdown-item" id="one341">&plus; 100&quot; of 1&frac34;&quot;</a>
-        <a class="dropdown-item" id="two12">&plus; 50&quot; of 2&frac12;&quot;</a>
-        <a class="dropdown-item" id="two121">&plus; 100&quot; of 2&frac12;&quot;</a>
-        <a class="dropdown-item" id="five">&plus; 100&quot; of 5&quot;</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" id="one">&plus; 1&quot; X 150&apos;</a>
+        <!--a class="dropdown-item" id="one18">&plus; 1&frac18;&quot; X 50&apos;</a>
+        <a class="dropdown-item" id="one181">&plus; 1&frac18;&quot; X 100&apos;</a>
+        <a class="dropdown-item" id="one14">&plus; 1&frac14;&quot; X 50&apos;</a>
+        <a class="dropdown-item" id="one141">&plus; 1&frac14;&quot; X 100&apos;</a-->
+        <a class="dropdown-item" id="one34">&plus; 1&frac34;&quot;  X 50&apos;</a>
+        <a class="dropdown-item" id="one341">&plus; 1&frac34;&quot; X 100&apos;</a>
+        <a class="dropdown-item" id="two12">&plus; 2&frac12;&quot; X 50&apos;</a>
+        <a class="dropdown-item" id="two121">&plus; 2&frac12;&quot; X 100&apos;</a>
+        <a class="dropdown-item" id="five">&plus; 5&quot; X 100&apos;</a>
+        <a class="dropdown-item" id="siam">2&frac12; Siamese &lpar;2&rpar;</a>
+        <a class="dropdown-item" id="triam">2&frac12; Triamese &lpar;3&rpar; </a>
       </div>
     </div>
 
@@ -48,14 +59,21 @@
       <button class="btn-sm btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonGPM" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         GPM
       </button>
-      <div class="dropdown-menu tac">
+      <div class="dropdown-menu">
         <a class="dropdown-item" id="five0">50 GPM</a>
         <a class="dropdown-item" id="seven0">70 GPM</a>
         <a class="dropdown-item" id="nine5">95 GPM</a>
         <a class="dropdown-item" id="one25">125 GPM</a>
         <a class="dropdown-item" id="one50">150 GPM</a>
         <a class="dropdown-item" id="two00">200 GPM</a>
+        <a class="dropdown-item" id="two10">210 GPM &lpar;1&quot; SB&rpar;</a>
         <a class="dropdown-item" id="two50">250 GPM</a>
+        <a class="dropdown-item" id="two65">265 GPM &lpar;1&frac18;&quot; SB&rpar;</a>
+        <a class="dropdown-item" id="three30">330 GPM &lpar;1&frac14;&quot; SB&rpar;</a>
+        <a class="dropdown-item" id="five00">500 GPM &lpar;1&frac38;&quot; MS&rpar;</a>
+        <a class="dropdown-item" id="six00">600 GPM &lpar;1&frac12;&quot; MS&rpar;</a>
+        <a class="dropdown-item" id="eight15">815 GPM &lpar;1&frac34;&quot; MS&rpar;</a>
+        <a class="dropdown-item" id="two">1065 GPM &lpar;2&quot; MS&rpar;</a>
       </div>
 
     </div>
@@ -72,8 +90,6 @@
         <a class="dropdown-item" id="bliz">&plus; 20 PSI Blitzfire Monitor</a>
         <a class="dropdown-item" id="stanPip">&plus; 25 PSI Standpipe System</a>
         <a class="dropdown-item" id="monDek">&plus; 25 PSI Ground Monitor/Deck Gun</a>
-        <a class="dropdown-item" id="siam">&plus; Siamese &lpar;2&rpar; 2&frac12;</a>
-        <a class="dropdown-item" id="triam">&plus; Triamese &lpar;3&rpar; 2&frac12;</a>
       </div>
     </div>
     <br>
@@ -113,11 +129,10 @@
     <div id="gpm" class="tac bor1s boxRad">GPM</div>
     <br><br> Engine Pressure
     <div id="EP" class="tac bor1s boxRad">EP</div>
-    <!--button id="EP" type="button" class="btn btn-sm btn-secondary">EP</button-->
   </div>
   <hr>
   <div class="container-fluid tac">
-    <button class="btn btn-secondary" onclick="location.reload(true)">Reset</button>
+    <button id="reset" class="btn btn-secondary" onclick="location.reload(true)">Reset</button>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

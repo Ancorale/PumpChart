@@ -9,6 +9,7 @@ $(document).ready(function() {
       aptLoad: 140,
       highRise: 360,
       elup: 5,
+      elup10: 50,
       elDn: -5,
       appl: 10,
       stanPip: 25,
@@ -16,6 +17,9 @@ $(document).ready(function() {
       bliz: 20
     },
     coeff = {
+      one: 130,
+      one18: 105,
+      one14: 80,
       one34: 12,
       one341: 12,
       two12: 2,
@@ -31,29 +35,23 @@ $(document).ready(function() {
     coefficient = 0,
     frictionLoss = 0,
     press = 0,
-    GPM = '';
+    GPM = ``,
+    FL =``;
 
-  $('.dropdown-item').on('click', function() {
-    let drpDnItm = $(this).prop('id'),
+
+  $(`.dropdown-item`).on(`click`, function() {
+    let drpDnItm = $(this).prop(`id`),
       thisDrpDnItmVal = $(this).html(),
-      dad = $(this).parent().prev().prop('id');
-      console.log(drpDnItm);
+      dad = $(this).parent().prev().prop(`id`);
+      //console.log(drpDnItm);
     drpDnItmVal.push(thisDrpDnItmVal + "<br>");
-    /*
-    switch (dad) {
-      case "dropdownMenuButtonNP":
-        $('#dropdownMenuButtonNP').html("choose");
-        break;
-      default:
 
-    }
-*/
     switch (drpDnItm) {
-      case "stanPipWo":
-        $('#EP').html("200 PSI Max Standpipe w&sol;o Pump");
+      case `stanPipWo`:
+        $(`#EP`).html("200 PSI Max Standpipe w&sol;o Pump");
         break;
-      case 'highRise':
-        $('#EP').html("360 PSI Max High Rise Pumping");
+      case `highRise`:
+        $(`#EP`).html("360 PSI Max High Rise Pumping");
         break;
 
       default:
@@ -61,15 +59,18 @@ $(document).ready(function() {
       for (key in preConst) {
         if (drpDnItm == key) {
           press = preConst[key];
+          engPress += press;
         }
       }
 
       for (keyc in coeff) {
         if (drpDnItm == keyc) {
           coefficient = coeff[keyc];
-          console.log(coefficient);
-          if (keyc == 'one34' || keyc == 'two12') {
-            hoseLength += 50;
+          console.log(keyc);
+          if (keyc == `one`) {
+            hoseLength += 150;
+          } else if (keyc == `one34` || keyc == `two12` || keyc == `one18` || keyc == `one14`) {
+              hoseLength += 50;
           } else {
             hoseLength += 100;
           }
@@ -77,24 +78,31 @@ $(document).ready(function() {
       }
 
 
-    if (dad == 'dropdownMenuButtonGPM') {
-      GPM = thisDrpDnItmVal.replace(/GPM/, '');
-      GPM = +GPM;
+    if (dad == `dropdownMenuButtonGPM`) {
+      GPM = parseInt(thisDrpDnItmVal, 10);
+      //GPM = thisDrpDnItmVal.replace(/GPM/, ``);
+      //GPM = +GPM;
     }
 
+    //console.log(`co ` + coefficient);
+    console.log(`gpm ` + GPM);
+    //console.log(`hose ` + hoseLength);
+
     function fricLoss(C, Q, L) {
-      let FL = C * Math.pow((Q / 100), 2) * L / 100;
-      return Math.ceil(FL);
+      FL = C * Math.pow((Q / 100), 2) * L / 100;
+      console.log(FL);
+      return Math.ceil(FL/5)*5;
     }
     frictionLoss = fricLoss(coefficient,GPM,hoseLength);
 
-    engPress += press;
+    //console.log(`press ` + press);
 
-    $('#FL').html('FL ' + frictionLoss);
-    $('#HL').html(hoseLength);
-    $('#gpm').html(GPM + ' GPM');
-    $('#EP').html(Math.ceil(engPress + frictionLoss));
-    $('#whats').html(drpDnItmVal);
+
+    $(`#FL`).html(`FL ` + Math.round(FL/5)*5);
+    $(`#HL`).html(hoseLength);
+    $(`#gpm`).html(GPM + ` GPM`);
+    $(`#EP`).html(Math.ceil(engPress + frictionLoss));
+    $(`#whats`).html(drpDnItmVal);
 
 }
 
