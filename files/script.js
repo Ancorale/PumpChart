@@ -102,6 +102,7 @@ $(document).ready(function() {
         $(`#gpm`).html(GPM + ` GPM`);
         $(`#EP`).html(finalEP);
         $(`#whats`).html(drpDnItmVal);
+        
 
         //console.log(`HD; ` + HD);
         if (drpDnItm == `nine5a` || drpDnItm == `one25a` || drpDnItm == `one50a` || drpDnItm == `two00a`) {
@@ -109,7 +110,7 @@ $(document).ready(function() {
           first = FricLoss(coefficient, GPM, hoseLength + 100) + 100;
           secnd = FricLoss(coefficient, GPM, hoseLength + 200) + 100;
           $(`#EP`).html("Apt. Load " + first + `/` + secnd);
-//// FIXME: 
+//// FIXME:
         }
 
         if (HD == `5"` && finalEP >= 185) {
