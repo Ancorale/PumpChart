@@ -8,8 +8,8 @@ $(document).ready(function() {
       relPum: 100,
       aptLoad: 140,
       highRise: 360,
-      elup: 5,
-      elup10: 50,
+      elUp: 5,
+      elUp10: 50,
       elDn: -5,
       appl: 10,
       stanPip: 25,
@@ -29,21 +29,22 @@ $(document).ready(function() {
       triam: .22
     };
   let drpDnItmVal = [],
-    total = 0,
     engPress = 0,
     hoseLength = 0,
     coefficient = 0,
     frictionLoss = 0,
     press = 0,
     GPM = ``,
-    FL =``;
+    HD = 0,
+    FL = ``;
 
 
   $(`.dropdown-item`).on(`click`, function() {
     let drpDnItm = $(this).prop(`id`),
       thisDrpDnItmVal = $(this).html(),
       dad = $(this).parent().prev().prop(`id`);
-      //console.log(drpDnItm);
+    //console.log(`drpDnItm: ` + drpDnItm);
+    //console.log(`thisDrpDnItmVal: ` + thisDrpDnItmVal);
     drpDnItmVal.push(thisDrpDnItmVal + "<br>");
 
     switch (drpDnItm) {
@@ -53,59 +54,90 @@ $(document).ready(function() {
       case `highRise`:
         $(`#EP`).html("360 PSI Max High Rise Pumping");
         break;
-
       default:
 
-      for (key in preConst) {
-        if (drpDnItm == key) {
-          press = preConst[key];
-          engPress += press;
-        }
-      }
-
-      for (keyc in coeff) {
-        if (drpDnItm == keyc) {
-          coefficient = coeff[keyc];
-          console.log(keyc);
-          if (keyc == `one`) {
-            hoseLength += 150;
-          } else if (keyc == `one34` || keyc == `two12` || keyc == `one18` || keyc == `one14`) {
-              hoseLength += 50;
-          } else {
-            hoseLength += 100;
+        for (i in preConst) {
+          if (drpDnItm == i) {
+            //console.log(`preConst: ` + i);
+            engPress += preConst[i];
           }
         }
-      }
+
+        for (i in coeff) {
+          if (drpDnItm == i) {
+            coefficient = coeff[i];
+            //console.log(`coefficient: ` + i);
+            if (i == `one`) {
+              hoseLength += 150;
+              HosDia(thisDrpDnItmVal);
+            } else if (i == `one34` || i == `two12` || i == `one18` || i == `one14`) {
+              hoseLength += 50;
+              HosDia(thisDrpDnItmVal);
+            } else {
+              hoseLength += 100;
+              HosDia(thisDrpDnItmVal);
+            }
+          }
+        }
+
+        if (dad == `dropdownMenuButtonGPM` || dad == `dropdownMenuButtonAL`) {
+          GPM = parseInt(thisDrpDnItmVal, 10);
+        }
+
+        //console.log(`co: ` + coefficient);
+        //console.log(`gpm: ` + GPM);
+        //console.log(`hose: ` + hoseLength);
 
 
-    if (dad == `dropdownMenuButtonGPM`) {
-      GPM = parseInt(thisDrpDnItmVal, 10);
-      //GPM = thisDrpDnItmVal.replace(/GPM/, ``);
-      //GPM = +GPM;
+        frictionLoss = FricLoss(coefficient, GPM, hoseLength);
+
+        finalEP = Math.ceil(engPress + frictionLoss);
+        //console.log(`finalEP: ` + finalEP + ` ` + typeof(finalEP));
+        //console.log(`diam: ` + diam);
+        //console.log(`finalEP: ` + finalEP + ` ` + typeof(finalEP));
+
+        $(`#FL`).html(`FL ` + Math.round(FL / 5) * 5);
+        $(`#HD`).html(HD);
+        $(`#HL`).html(hoseLength);
+        $(`#gpm`).html(GPM + ` GPM`);
+        $(`#EP`).html(finalEP);
+        $(`#whats`).html(drpDnItmVal);
+
+        //console.log(`HD; ` + HD);
+        if (drpDnItm == `nine5a` || drpDnItm == `one25a` || drpDnItm == `one50a` || drpDnItm == `two00a`) {
+          //console.log(`nine5a: ` + drpDnItm);
+          first = FricLoss(coefficient, GPM, hoseLength + 100) + 100;
+          secnd = FricLoss(coefficient, GPM, hoseLength + 200) + 100;
+          $(`#EP`).html("Apt. Load " + first + `/` + secnd);
+//// FIXME: 
+        }
+
+        if (HD == `5"` && finalEP >= 185) {
+          $(`#EP`).html(`185 PSI Operating Pressure Exceed at ` + finalEP + ` PSI`).addClass(`flashWite`);
+        } else if (finalEP >= 365) {
+          $(`#EP`).html(`365 PSI Operating Pressure Exceed at ` + finalEP + ` PSI`).addClass(`flashWite`);
+        }
+
+    //functions
+        function HosDia(val) {
+          dig1 = val.charAt(2);
+          dig2 = val.charAt(3);
+          HD = dig1 + dig2;
+        }
+
+        function FricLoss(C, Q, L) {
+          FL = C * Math.pow((Q / 100), 2) * L / 100;
+          console.log(`FL: ` + FL);
+          return Math.ceil(FL / 5) * 5;
+        }
     }
+  });
 
-    //console.log(`co ` + coefficient);
-    console.log(`gpm ` + GPM);
-    //console.log(`hose ` + hoseLength);
-
-    function fricLoss(C, Q, L) {
-      FL = C * Math.pow((Q / 100), 2) * L / 100;
-      console.log(FL);
-      return Math.ceil(FL/5)*5;
-    }
-    frictionLoss = fricLoss(coefficient,GPM,hoseLength);
-
-    //console.log(`press ` + press);
-
-
-    $(`#FL`).html(`FL ` + Math.round(FL/5)*5);
-    $(`#HL`).html(hoseLength);
-    $(`#gpm`).html(GPM + ` GPM`);
-    $(`#EP`).html(Math.ceil(engPress + frictionLoss));
-    $(`#whats`).html(drpDnItmVal);
-
-}
-
+  $(`#highRise`).on(`click`, function() {
+    $(`#HL`).html(`150`);
+    $(`#HD`).html(`2&frac12;`);
+    $(`#gpm`).html(`256` + ` GPM`);
+    $(`#EP`).html(`75`);
   });
 
 });

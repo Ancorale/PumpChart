@@ -11,8 +11,16 @@ body {
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  background-color: #eee;
-  color: #000;
+  background-color: #ff0;
+  color: #00f;
+}
+
+.btn {
+  color: #ff0;
+}
+
+.backBlue {
+  background-color: #00f;
 }
 
 button {
@@ -38,6 +46,11 @@ div {
   display: inline-block;
 }
 
+.dropdown-menu {
+  background-color: #eef;
+  color: #00f;
+}
+
 .heading-primary {
   color: #000;
 }
@@ -46,7 +59,7 @@ div {
   color: #00f;
   display: block;
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .heading-primary-sub {
@@ -57,7 +70,8 @@ div {
 }
 
 hr {
-  background-color: #000;
+  background-color: #00f;
+  border-width: 8px;
 }
 
 .mt15 {
@@ -76,40 +90,31 @@ hr {
   text-align: right;
 }
 
-#top{
+#top {
   background-color: #ff0;
   display: block;
   padding: 10px 0;
-  border-bottom: 1px solid;
+  border-bottom: 8px solid #00f;
 }
 
-#EP, #NP, #SA, #EL, #HL, #FL, #gpm {
-  color: #fff;
-  background-color: #6c757d;
+#EP, #NP, #SA, #EL, #HL, #FL, #gpm, #HD {
+  color: #ff0;
+  background-color: #00f;
   padding: 3px 8px;
   font-weight: normal;
   font-size: 14px;
 }
-/*
-#EP {
-  background-color: #0f0;
-  color: #000;
-}
-*/
-#FL{
-  color: #cfc;
-}
 
-#reset{
+#reset {
   background-color: #f00;
 }
 
-.flashRed {
-  -webkit-animation: flashRed 2s infinite;
-  animation: flashRed 2s infinite;
+.flashWite {
+  -webkit-animation: flashWite 2s infinite;
+  animation: flashWite 2s infinite;
 }
 
-@-webkit-keyframes flashRed {
+@-webkit-keyframes flashWite {
   0%, 100% {
     color: #000;
   }
@@ -121,7 +126,7 @@ hr {
   }
 }
 
-@keyframes flashRed {
+@keyframes flashWite {
   0%, 100% {
     color: #000;
   }
