@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  `use strict`;
   const preConst = {
       masStr: 80,
       smBorHan: 50,
@@ -102,13 +103,19 @@ $(document).ready(function() {
         $(`#gpm`).html(GPM + ` GPM`);
         $(`#EP`).html(finalEP);
         $(`#whats`).html(drpDnItmVal);
-        
+
 
         //console.log(`HD; ` + HD);
         if (drpDnItm == `nine5a` || drpDnItm == `one25a` || drpDnItm == `one50a` || drpDnItm == `two00a`) {
           //console.log(`nine5a: ` + drpDnItm);
-          first = FricLoss(coefficient, GPM, hoseLength + 100) + 100;
-          secnd = FricLoss(coefficient, GPM, hoseLength + 200) + 100;
+          first = FricLoss(12, GPM, hoseLength += 100) + 100;
+          console.log(`co: ` + coefficient);
+          console.log(`gpm: ` + GPM);
+          console.log(`hose: ` + hoseLength);
+          secnd = FricLoss(12, GPM, hoseLength += 200) + 100;
+          console.log(`co: ` + coefficient);
+          console.log(`gpm: ` + GPM);
+          console.log(`hose: ` + hoseLength);
           $(`#EP`).html("Apt. Load " + first + `/` + secnd);
 //// FIXME:
         }
@@ -128,7 +135,7 @@ $(document).ready(function() {
 
         function FricLoss(C, Q, L) {
           FL = C * Math.pow((Q / 100), 2) * L / 100;
-          console.log(`FL: ` + FL);
+          //console.log(`FL: ` + FL);
           return Math.ceil(FL / 5) * 5;
         }
     }
