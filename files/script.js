@@ -17,6 +17,16 @@ $(document).ready(function() {
       monDek: 25,
       bliz: 20
     },
+    aptLoad = {
+      t11: 70,
+      t11s: 100,
+      t16: 65,
+      t17: 70,
+      t17s: 100,
+      t18: 50,
+      t18s: 50,
+      t22: 65
+    },
     coeff = {
       one: 130,
       one18: 105,
@@ -37,7 +47,8 @@ $(document).ready(function() {
     press = 0,
     GPM = ``,
     HD = 0,
-    FL = ``;
+    aerial,
+    FL;
 
 
   $(`.dropdown-item`).on(`click`, function() {
@@ -46,14 +57,14 @@ $(document).ready(function() {
       dad = $(this).parent().prev().prop(`id`);
     //console.log(`drpDnItm: ` + drpDnItm);
     //console.log(`thisDrpDnItmVal: ` + thisDrpDnItmVal);
-    drpDnItmVal.push(thisDrpDnItmVal + "<br>");
+    drpDnItmVal.push(thisDrpDnItmVal + `<br>`);
 
     switch (drpDnItm) {
       case `stanPipWo`:
-        $(`#EP`).html("200 PSI Max Standpipe w&sol;o Pump");
+        $(`#EP`).html(`200 PSI Max Standpipe w&sol;o Pump`);
         break;
       case `highRise`:
-        $(`#EP`).html("360 PSI Max High Rise Pumping");
+        $(`#EP`).html(`360 PSI Max High Rise Pumping`);
         break;
       default:
 
@@ -61,6 +72,14 @@ $(document).ready(function() {
           if (drpDnItm == i) {
             //console.log(`preConst: ` + i);
             engPress += preConst[i];
+          }
+        }
+
+        for (i in aptLoad) {
+          if (drpDnItm == i) {
+            //console.log(`aptLoad: ` + i);
+            engPress += aptLoad[i];
+            aerial = aptLoad[i] + ` PSI-`;
           }
         }
 
@@ -81,28 +100,36 @@ $(document).ready(function() {
           }
         }
 
+
+
         if (dad == `dropdownMenuButtonGPM` || dad == `dropdownMenuButtonAL`) {
           GPM = parseInt(thisDrpDnItmVal, 10);
         }
 
+        //console.log(`aerial: ` + aerial);
         //console.log(`co: ` + coefficient);
         //console.log(`gpm: ` + GPM);
         //console.log(`hose: ` + hoseLength);
 
 
         frictionLoss = FricLoss(coefficient, GPM, hoseLength);
-
+        let AFL = parseInt(aerial, 10);
         finalEP = Math.ceil(engPress + frictionLoss);
         //console.log(`finalEP: ` + finalEP + ` ` + typeof(finalEP));
         //console.log(`diam: ` + diam);
         //console.log(`finalEP: ` + finalEP + ` ` + typeof(finalEP));
 
-        $(`#FL`).html(`FL ` + Math.round(FL / 5) * 5);
+        $(`#FL`).html(`FL ` + Math.round(FL / 5) * 5) + AFL;
         $(`#HD`).html(HD);
         $(`#HL`).html(hoseLength);
         $(`#gpm`).html(GPM + ` GPM`);
         $(`#EP`).html(finalEP);
-        $(`#whats`).html(drpDnItmVal);
+        if (!aerial) {
+          $(`#whats`).html(drpDnItmVal);
+        } else {
+          $(`#whats`).html(aerial + drpDnItmVal);
+        }
+
 
 
         //console.log(`HD; ` + HD);
@@ -116,7 +143,7 @@ $(document).ready(function() {
           console.log(`co: ` + coefficient);
           console.log(`gpm: ` + GPM);
           console.log(`hose: ` + hoseLength);
-          $(`#EP`).html("Apt. Load " + first + `/` + secnd);
+          $(`#EP`).html(`Apt. Load ` + first + `/` + secnd);
 //// FIXME:
         }
 
@@ -146,6 +173,7 @@ $(document).ready(function() {
     $(`#HD`).html(`2&frac12;`);
     $(`#gpm`).html(`256` + ` GPM`);
     $(`#EP`).html(`75`);
+    $(`#whats`).html(`High-Rise Hose Pack`);
   });
 
 });
