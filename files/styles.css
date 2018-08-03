@@ -74,6 +74,10 @@ hr {
   border-width: 8px;
 }
 
+.likeVol {
+margin-left: 20px;
+}
+
 .mt15 {
   margin-top: 15px;
 }
@@ -136,4 +140,10 @@ hr {
   50% {
     color: #000;
   }
+}
+
+.vertical-text {
+	transform: rotate(90deg);
+	transform-origin: left top 0;
+  float: left;
 }

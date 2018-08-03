@@ -50,6 +50,9 @@ $(document).ready(function() {
     aerial,
     FL;
 
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
 
   $(`.dropdown-item`).on(`click`, function() {
     let drpDnItm = $(this).prop(`id`),
