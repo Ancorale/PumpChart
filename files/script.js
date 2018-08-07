@@ -50,16 +50,21 @@ $(document).ready(function() {
     aerial,
     FL;
 
-    $(function () {
-      $('[data-toggle="popover"]').popover()
-    })
-
   $(`.dropdown-item`).on(`click`, function() {
     let drpDnItm = $(this).prop(`id`),
+      dataText = $(this).attr('data-text'),
       thisDrpDnItmVal = $(this).html(),
       dad = $(this).parent().prev().prop(`id`);
+    //console.log(`dataText: ` + dataText);
     //console.log(`drpDnItm: ` + drpDnItm);
     //console.log(`thisDrpDnItmVal: ` + thisDrpDnItmVal);
+    if (!dataText) {
+      dataText;
+    } else {
+      dataText = dataText.replace(/~/g, "<br>");
+      $('#EP').html('0');
+    }
+
     drpDnItmVal.push(thisDrpDnItmVal + `<br>`);
 
     switch (drpDnItm) {
@@ -103,8 +108,6 @@ $(document).ready(function() {
           }
         }
 
-
-
         if (dad == `dropdownMenuButtonGPM` || dad == `dropdownMenuButtonAL`) {
           GPM = parseInt(thisDrpDnItmVal, 10);
         }
@@ -113,7 +116,6 @@ $(document).ready(function() {
         //console.log(`co: ` + coefficient);
         //console.log(`gpm: ` + GPM);
         //console.log(`hose: ` + hoseLength);
-
 
         frictionLoss = FricLoss(coefficient, GPM, hoseLength);
         let AFL = parseInt(aerial, 10);
@@ -127,13 +129,14 @@ $(document).ready(function() {
         $(`#HL`).html(hoseLength);
         $(`#gpm`).html(GPM + ` GPM`);
         $(`#EP`).html(finalEP);
-        if (!aerial) {
-          $(`#whats`).html(drpDnItmVal);
+
+        if (dataText) {
+          $('#whats').html(dataText);
+        } else if (!aerial) {
+         $(`#whats`).html(drpDnItmVal);
         } else {
           $(`#whats`).html(aerial + drpDnItmVal);
         }
-
-
 
         //console.log(`HD; ` + HD);
         if (drpDnItm == `nine5a` || drpDnItm == `one25a` || drpDnItm == `one50a` || drpDnItm == `two00a`) {
