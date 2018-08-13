@@ -52,18 +52,27 @@ $(document).ready(function() {
 
   $(`.dropdown-item`).on(`click`, function() {
     let drpDnItm = $(this).prop(`id`),
-      dataText = $(this).attr('data-text'),
+      dataText = $(this).attr(`data-text`),
       thisDrpDnItmVal = $(this).html(),
       dad = $(this).parent().prev().prop(`id`);
-    //console.log(`dataText: ` + dataText);
+    console.log(`dataText: ` + dataText);
     //console.log(`drpDnItm: ` + drpDnItm);
     //console.log(`thisDrpDnItmVal: ` + thisDrpDnItmVal);
     if (!dataText) {
       dataText;
     } else {
-      dataText = dataText.replace(/~/g, "<br>");
-      $('#EP').html('0');
+      dataText = dataText.replace(/~/g, `<br>`);
+      console.log(`dataText: ` + dataText);
+      $(`#EP`).html(`0`);
     }
+
+    if (!aerial) {
+     dataText = drpDnItmVal;
+    } else {
+      dataText = aerial + drpDnItmVal;
+    }
+    console.log(`dataText: ` + dataText);
+    $('#whats').html(dataText);
 
     drpDnItmVal.push(thisDrpDnItmVal + `<br>`);
 
@@ -112,13 +121,15 @@ $(document).ready(function() {
           GPM = parseInt(thisDrpDnItmVal, 10);
         }
 
+
+
         //console.log(`aerial: ` + aerial);
         //console.log(`co: ` + coefficient);
         //console.log(`gpm: ` + GPM);
         //console.log(`hose: ` + hoseLength);
 
         frictionLoss = FricLoss(coefficient, GPM, hoseLength);
-        let AFL = parseInt(aerial, 10);
+        let AFL = parseInt(aerial);
         finalEP = Math.ceil(engPress + frictionLoss);
         //console.log(`finalEP: ` + finalEP + ` ` + typeof(finalEP));
         //console.log(`diam: ` + diam);
@@ -130,13 +141,7 @@ $(document).ready(function() {
         $(`#gpm`).html(GPM + ` GPM`);
         $(`#EP`).html(finalEP);
 
-        if (dataText) {
-          $('#whats').html(dataText);
-        } else if (!aerial) {
-         $(`#whats`).html(drpDnItmVal);
-        } else {
-          $(`#whats`).html(aerial + drpDnItmVal);
-        }
+
 
         //console.log(`HD; ` + HD);
         if (drpDnItm == `nine5a` || drpDnItm == `one25a` || drpDnItm == `one50a` || drpDnItm == `two00a`) {
