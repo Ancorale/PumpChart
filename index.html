@@ -16,7 +16,6 @@
 <body>
   <div id="top" class="tac">
     <h1 class="heading-primary">
-
       <span class="heading-primary-main tac">Clark County Fire Department</span>
       <span class="heading-primary-sub tac">Engine Pump Calculator</span>
     </h1>
@@ -32,7 +31,7 @@
         <a class="dropdown-item" id="fogNoz">&plus; 100 PSI NP Fog Nozzles</a>
       </div>
     </div>
-    <br>
+    
     <div class="dropdown">
       <button class="btn-sm btn backBlue dropdown-toggle" type="button" id="dropdownMenuButtonHS" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hose Size</button>
       <div class="dropdown-menu">
@@ -120,14 +119,14 @@
     <div class="dropdown">
       <button class="btn-sm btn backBlue dropdown-toggle" type="button" id="dropdownMenuButtonEL" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Elevation</button>
       <div class="dropdown-menu">
-        <a class="dropdown-item" id="elUp">Elevation UP&colon; &plus; 5 PSI per floor &lpar;&minus;1<sup>st</sup>&rpar;</a>
-        <a class="dropdown-item" id="elUp10">Elevation UP 10 floors&colon; &plus; 50 PSI</a>
-        <a class="dropdown-item" id="elDn">Elevation DOWN&colon; &minus; 5 PSI per floor</a>
+        <a class="dropdown-item" id="elUp">Elev UP 1 floor&colon; &plus; 5 PSI per floor &lpar;&minus;1<sup>st</sup>&rpar;</a>
+        <a class="dropdown-item" id="elUp10">Elev UP 10 floors&colon; &plus; 50 PSI</a>
+        <a class="dropdown-item" id="elDn">Elev DOWN 1 floor&colon; &minus; 5 PSI per floor</a>
       </div>
     </div>
 
     <br>
-    <button class="btn-sm btn backBlue" type="button" id="highRise">High-Rise<br>Hose Pack</button>
+    <button class="btn-sm btn backBlue" type="button" id="highRiseHose">High-Rise<br>Hose Pack</button>
 
     <div class="dropdown">
       <button class="btn-sm btn backBlue dropdown-toggle" type="button" id="dropdownMenuButtonFm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Foam</button>
@@ -192,7 +191,7 @@
   <hr>
   <p id="whats" class="tac">Items</p>
   <hr>
-  <div class="container-fluid tac">
+  <div id="botBox" class="container-fluid tac">
     <div id="HL" class="tac bor1s boxRad">HL</div>
     of
     <div id="HD" class="tac bor1s boxRad">HD</div>

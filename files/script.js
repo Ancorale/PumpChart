@@ -9,7 +9,7 @@ $(document).ready(function() {
       stanPipWo: 200,
       relPum: 100,
       aptLoad: 140,
-      highRise: 360,
+      highRiseHose: 360,
       elUp: 5,
       elUp10: 50,
       elDn: -5,
@@ -34,8 +34,6 @@ $(document).ready(function() {
 
     // hose size coefficient
     coeff = {
-      siam: .5,
-      triam: .22,
       one: 130,
       one18: 105,
       one14: 80,
@@ -43,7 +41,10 @@ $(document).ready(function() {
       one341: 12,
       two12: 2,
       two121: 2,
-      five: .08
+      five: .08,
+      // special appliances
+      siam: .5,
+      triam: .22
     };
 
   // vaiable setup
@@ -68,23 +69,23 @@ $(document).ready(function() {
   $(`.dropdown-item`).on(`click`, function() {
     let drpDnItm = $(this).prop(`id`),
       dataText = $(this).attr(`data-text`),
-      thisDrpDnItmVal = $(this).html(),
-      dad = $(this).parent().prev().prop(`id`);
+      dad = $(this).parent().prev().prop(`id`),
+      thisDrpDnItmVal = $(this).html();
     //console.log(`dataText: ` + dataText);
-    //console.log(`drpDnItm: ` + drpDnItm);
-    //console.log(`thisDrpDnItmVal: ` + thisDrpDnItmVal);
-
-
+    console.log(`drpDnItm: ` + drpDnItm);
+    //console.log(`drpDnItmVal: ` + typeof(drpDnItmVal));
+    //console.log(`thisDrpDnItmVal: ` + typeof(thisDrpDnItmVal));
 
     // add line break
     drpDnItmVal.push(thisDrpDnItmVal + `<br>`);
+
 
     // standpipe max alert
     switch (drpDnItm) {
       case `stanPipWo`:
         $(`#EP`).html(`200 PSI Max Standpipe w&sol;o Pump`);
         break;
-      case `highRise`:
+      case `highRiseHose`:
         $(`#EP`).html(`360 PSI Max High Rise Pumping`);
         break;
       default:
@@ -98,29 +99,43 @@ $(document).ready(function() {
         }
 
         // add aerial friction loss to engine pressure
-        for (i in airFL) {
-          if (drpDnItm == i) {
+        for (x in airFL) {
+          if (drpDnItm == x) {
             //console.log(`airFL: ` + i);
-            engPress += airFL[i];
-            aerial = airFL[i] + ` PSI-`;
+            engPress += airFL[x];
+            aerial = airFL[x] + ` PSI-`;
+            $(`#EP`).html(airFL);
           }
         }
 
-        // foam
+        // convert aerial to integer
+        let AFL = parseInt(aerial);
+
         if (dataText) {
+          /*
+          if foam,
+          add foam text,
+          add line breaks
+          */
           dataText = dataText.replace(/~/g, `<br>`);
-          //console.log(`dataText: ` + dataText);
-          //console.log(typeof(dataText));
-          $('#whats').html(dataText);
-          $(`#EP`).html(`0`);
-        } else if
-        // aerial friction loss
-        (typeof(aerial) == `undefined`) {
-          console.log(`drpDnItmVal: ` + drpDnItmVal);
+          $('#botBox').html(dataText);
+        }
+
+        /*
+        if no aerial fricion Loss,
+        output item id
+        */
+        if (typeof(aerial) == `undefined`) {
+          //console.log(`drpDnItmVal: ` + drpDnItmVal);
           $('#whats').html(drpDnItmVal);
         } else {
+        /*
+        if aerial fricion Loss,
+        output aerial friction loss
+         and add item id
+          */
           $('#whats').html(aerial + drpDnItmVal);
-          console.log(`drpDnItmVal + A: ` + drpDnItmVal);
+          //console.log(`drpDnItmVal + A: ` + drpDnItmVal);
         }
 
         /*
@@ -129,16 +144,12 @@ $(document).ready(function() {
         and runs HosDia function to output hose size text
         */
         for (i in coeff) {
-          if (drpDnItm == i) {
+          if (drpDnItm === i) {
             coefficient = coeff[i];
-            //console.log(`coefficient: ` + i);
-          } else if (i == `siam` || `triam`) {
-                coefficient = coeff[i];
-                //console.log(`coefficient: ` + coefficient);
-            } else if (i == `one`) {
+            if (i === `one`) {
               hoseLength += 150;
               HosDia(thisDrpDnItmVal);
-            } else if (i == `one34` || i == `two12` || i == `one18` || i == `one14`) {
+            } else if (i === `one34` || i === `two12` || i === `one18` || i === `one14`) {
               hoseLength += 50;
               HosDia(thisDrpDnItmVal);
             } else {
@@ -146,30 +157,41 @@ $(document).ready(function() {
               HosDia(thisDrpDnItmVal);
             }
           }
-        
+        }
+//////////////////////////////////////
 
         // get gpm from button and convert to integer
         if (dad == `dropdownMenuButtonGPM` || dad == `dropdownMenuButtonAL`) {
           GPM = parseInt(thisDrpDnItmVal);
         }
 
-        //console.log(`aerial: ` + aerial);
-        //console.log(`co: ` + coefficient);
-        //console.log(`gpm: ` + GPM);
-        //console.log(`hose: ` + hoseLength);
+        // apartment load
+        if (drpDnItm == `nine5a` || drpDnItm == `one25a` || drpDnItm == `one50a` || drpDnItm == `two00a`) {
+          first = FricLoss(12, GPM, hoseLength += 100) + 100;
+          console.log(`co: ` + coefficient);
+          console.log(`gpm: ` + GPM);
+          console.log(`hose: ` + hoseLength);
+          secnd = FricLoss(12, GPM, hoseLength += 100) + 150;
+          console.log(`co: ` + coefficient);
+          console.log(`gpm: ` + GPM);
+          console.log(`hose: ` + hoseLength);
+          $(`#EP`).html(`Apt. Load ` + first + `/` + secnd);
+          $(`#HL`).html(hoseLength);
+          $(`#HD`).html(HD);
+        }
+
+        console.log(`aerial: ` + aerial);
+        console.log(`co: ` + coefficient);
+        console.log(`gpm: ` + GPM);
+        console.log(`hose: ` + hoseLength);
 
         // run FricLoss function
         frictionLoss = FricLoss(coefficient, GPM, hoseLength);
 
-        // convert aerial to integer
-        let AFL = parseInt(aerial);
+
 
         // round up and add to find final engine pressure
         finalEP = Math.ceil(engPress + frictionLoss);
-
-        //console.log(`finalEP: ` + finalEP + ` ` + typeof(finalEP));
-        //console.log(`diam: ` + diam);
-        //console.log(`finalEP: ` + finalEP + ` ` + typeof(finalEP));
 
         /*
         round to 5,
@@ -189,21 +211,6 @@ $(document).ready(function() {
 
         // output final engine pressure
         $(`#EP`).html(finalEP);
-
-        //console.log(`HD; ` + HD);
-
-        // apartment load
-        if (drpDnItm == `nine5a` || drpDnItm == `one25a` || drpDnItm == `one50a` || drpDnItm == `two00a`) {
-          first = FricLoss(12, GPM, hoseLength += 100) + 100;
-          console.log(`co: ` + coefficient);
-          console.log(`gpm: ` + GPM);
-          console.log(`hose: ` + hoseLength);
-          secnd = FricLoss(12, GPM, hoseLength += 200) + 100;
-          console.log(`co: ` + coefficient);
-          console.log(`gpm: ` + GPM);
-          console.log(`hose: ` + hoseLength);
-          $(`#EP`).html(`Apt. Load ` + first + `/` + secnd);
-        }
 
         // max operating pressure alert
         if (HD == `5"` && finalEP >= 185) {
@@ -238,8 +245,8 @@ $(document).ready(function() {
     } else {
       finalEP += 75;
       $(`#EP`).html(finalEP);
-      $(`#whats`).html(thisDrpDnItmVal);
+      $(`#whats`).html(drpDnItmVal + `High-Rise Hose Pack`);
     }
-    $(`#whats`).html(`High-Rise Hose Pack`);
   });
+
 });
