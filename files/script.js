@@ -129,11 +129,11 @@ $(document).ready(function() {
           //console.log(`drpDnItmVal: ` + drpDnItmVal);
           $('#whats').html(drpDnItmVal);
         } else {
-        /*
-        if aerial fricion Loss,
-        output aerial friction loss
-         and add item id
-          */
+          /*
+          if aerial fricion Loss,
+          output aerial friction loss
+           and add item id
+            */
           $('#whats').html(aerial + drpDnItmVal);
           //console.log(`drpDnItmVal + A: ` + drpDnItmVal);
         }
@@ -158,7 +158,7 @@ $(document).ready(function() {
             }
           }
         }
-//////////////////////////////////////
+        //////////////////////////////////////
 
         // get gpm from button and convert to integer
         if (dad == `dropdownMenuButtonGPM` || dad == `dropdownMenuButtonAL`) {
@@ -235,7 +235,7 @@ $(document).ready(function() {
   });
 
   // high-rise hose pack button
-  $(`#highRise`).on(`click`, function() {
+  $(`#highRiseHose`).on(`click`, function() {
     //console.log(`highRise: ` + highRise);
     $(`#HL`).html(`150`);
     $(`#HD`).html(`2&frac12;`);
