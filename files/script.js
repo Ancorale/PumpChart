@@ -47,6 +47,7 @@ $(document).ready(function() {
       triam: .22
     };
 
+
   // vaiable setup
   let drpDnItmVal = [],
     engPress = 0,
@@ -158,37 +159,14 @@ $(document).ready(function() {
             }
           }
         }
-        //////////////////////////////////////
 
         // get gpm from button and convert to integer
         if (dad == `dropdownMenuButtonGPM` || dad == `dropdownMenuButtonAL`) {
           GPM = parseInt(thisDrpDnItmVal);
         }
 
-        // apartment load
-        if (drpDnItm == `nine5a` || drpDnItm == `one25a` || drpDnItm == `one50a` || drpDnItm == `two00a`) {
-          first = FricLoss(12, GPM, hoseLength += 100) + 100;
-          console.log(`co: ` + coefficient);
-          console.log(`gpm: ` + GPM);
-          console.log(`hose: ` + hoseLength);
-          secnd = FricLoss(12, GPM, hoseLength += 100) + 150;
-          console.log(`co: ` + coefficient);
-          console.log(`gpm: ` + GPM);
-          console.log(`hose: ` + hoseLength);
-          $(`#EP`).html(`Apt. Load ` + first + `/` + secnd);
-          $(`#HL`).html(hoseLength);
-          $(`#HD`).html(HD);
-        }
-
-        console.log(`aerial: ` + aerial);
-        console.log(`co: ` + coefficient);
-        console.log(`gpm: ` + GPM);
-        console.log(`hose: ` + hoseLength);
-
         // run FricLoss function
         frictionLoss = FricLoss(coefficient, GPM, hoseLength);
-
-
 
         // round up and add to find final engine pressure
         finalEP = Math.ceil(engPress + frictionLoss);
@@ -219,6 +197,138 @@ $(document).ready(function() {
           $(`#EP`).html(`365 PSI Operating Pressure Exceed at ` + finalEP + ` PSI`).addClass(`flashWite`);
         }
 
+        // apartment load
+          switch (hoseLength) {
+            case 50:
+              switch (drpDnItm) {
+                case `nine5a`:
+                  finalEP = `115&sol;115`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `one25a`:
+                  finalEP = `120&sol;125`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `one50a`:
+                  finalEP = `130&sol;135`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `two00a`:
+                  finalEP = `155&sol;175`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+              }
+              break;
+            case 100:
+              switch (drpDnItm) {
+                case `nine5a`:
+                  finalEP = `115&sol;120`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `one25a`:
+                  finalEP = `125&sol;135`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `one50a`:
+                  finalEP = `135&sol;145`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `two00a`:
+                  finalEP = `160&sol;190`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+              }
+              break;
+            case 200:
+              switch (drpDnItm) {
+                case `nine5a`:
+                  finalEP = `115&sol;125`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `one25a`:
+                  finalEP = `125&sol;145`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `one50a`:
+                  finalEP = `135&sol;165`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `two00a`:
+                  finalEP = `165&sol;225`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+              }
+              break;
+            case 300:
+              switch (drpDnItm) {
+                case `nine5a`:
+                  finalEP = `120&sol;135`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `one25a`:
+                  finalEP = `130&sol;160`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `one50a`:
+                  finalEP = `140&sol;180`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `two00a`:
+                  finalEP = `175&sol;255`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+              }
+              break;
+            case 400:
+              switch (drpDnItm) {
+                case `nine5a`:
+                  finalEP = `120&sol;140`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `one25a`:
+                  finalEP = `135&sol;170`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `one50a`:
+                  finalEP = `145&sol;200`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `two00a`:
+                  finalEP = `180&sol;285`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+              }
+              break;
+            case 500:
+              switch (drpDnItm) {
+                case `nine5a`:
+                  finalEP = `120&sol;150`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `one25a`:
+                  finalEP = `135&sol;180`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `one50a`:
+                  finalEP = `150&sol;220`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                case `two00a`:
+                  finalEP = `190&sol;320`;
+                  Outputs(HD, hoseLength, GPM, finalEP);
+                  break;
+                  default:
+              }
+              break;
+
+            default:
+          }
+        //console.log(`aerial: ` + aerial);
+        //console.log(`co: ` + coefficient);
+        //console.log(`gpm: ` + GPM);
+        //console.log(`hose: ` + hoseLength);
+
+
         //functions
         function HosDia(val) {
           dig1 = val.charAt(2);
@@ -230,6 +340,21 @@ $(document).ready(function() {
           FL = C * Math.pow((Q / 100), 2) * L / 100;
           //console.log(`FL: ` + FL);
           return Math.ceil(FL / 5) * 5;
+        }
+
+        function Outputs(HD, hoseLength, GPM, finalEP) {
+          // output hose size
+          $(`#HD`).html(HD);
+
+          // output hose length
+          $(`#HL`).html(hoseLength);
+
+          // output gpm
+          $(`#gpm`).html(GPM + ` GPM`);
+
+          // output final engine pressure
+          $(`#EP`).html(finalEP);
+          $('#whats').html(`Apartment Load`);
         }
     }
   });
