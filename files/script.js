@@ -39,8 +39,10 @@ $(document).ready(function() {
       one14: 80,
       one34: 12,
       one341: 12,
+      one342: 12,
       two12: 2,
       two121: 2,
+      two122: 2,
       five: .08,
       // special appliances
       siam: .5,
@@ -150,7 +152,10 @@ $(document).ready(function() {
             if (i === `one`) {
               hoseLength += 150;
               HosDia(thisDrpDnItmVal);
-            } else if (i === `one34` || i === `two12` || i === `one18` || i === `one14`) {
+            } else if (i === `one342` || i === `two122`) {
+              hoseLength += 200;
+              HosDia(thisDrpDnItmVal);
+            } else if (i === `one34` || i === `two122` || i === `one18` || i === `one14`) {
               hoseLength += 50;
               HosDia(thisDrpDnItmVal);
             } else {

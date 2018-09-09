@@ -83,6 +83,10 @@ hr {
   border-width: 8px;
 }
 
+.precon {
+  background-color: #ccf;
+}
+
 .statPres {
   writing-mode: vertical-rl;
   justify-self: center;
