@@ -1,6 +1,7 @@
 .ftpconfig
 .ftpquota
 .htaccess
+.vscode
 
 # Windows image file caches
 Thumbs.db
