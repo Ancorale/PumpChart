@@ -1,5 +1,4 @@
-{
-    "name": "Clark County Fire Department Pump Chart",
+{   "name": "Fire Engine Pump Chart",
     "short_name": "CCFDPC",
     "icons": [
         {
@@ -8,14 +7,12 @@
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-256x256.png",
-            "sizes": "256x256",
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
             "type": "image/png"
         }
     ],
-    "start_url": "/?utm_source=a2hs",
-    "orientation": "portrait",
-    "theme_color": "#00f",
-    "background_color": "#ff0",
-    "display": "fullscreen"
+    "theme_color": "#000000",
+    "background_color": "#000000",
+    "display": "standalone"
 }

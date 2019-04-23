@@ -13,7 +13,7 @@
   }
 
 
-  var CACHE_NAME = `ccfdpc-cache-v1.1`;
+  var CACHE_NAME = `ccfdpc-cache-v2.0`;
   var urlsToCache = [
     `/`,
     `/files/styles.css`,
@@ -77,7 +77,7 @@ self.addEventListener(`fetch`, function (event) {
 
 self.addEventListener(`activate`, function (event) {
 
-  var cacheWhitelist = [`ccfdpc-cache-v1.1`];
+  var cacheWhitelist = [`ccfdpc-cache-v1.8`];
 
   event.waitUntil(
     caches.keys().then(function (cacheNames) {
