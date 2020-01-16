@@ -12,6 +12,7 @@
             "type": "image/png"
         }
     ],
+    "start_url": "/?utm_source=a2hs",
     "theme_color": "#000000",
     "background_color": "#000000",
     "display": "standalone"
