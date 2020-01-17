@@ -117,7 +117,14 @@ hr {
   border-bottom: 8px solid #00f;
 }
 
-#EP, #NP, #SA, #EL, #HL, #FL, #gpm, #HD {
+#EP,
+#NP,
+#SA,
+#EL,
+#HL,
+#FL,
+#gpm,
+#HD {
   color: #ff0;
   background-color: #00f;
   padding: 3px 8px;
@@ -139,10 +146,12 @@ hr {
 }
 
 @-webkit-keyframes flashWite {
-  0%, 100% {
+  0%,
+  100% {
     color: #000;
   }
-  25%, 75% {
+  25%,
+  75% {
     color: #fff;
   }
   50% {
@@ -151,10 +160,12 @@ hr {
 }
 
 @keyframes flashWite {
-  0%, 100% {
+  0%,
+  100% {
     color: #000;
   }
-  25%, 75% {
+  25%,
+  75% {
     color: #fff;
   }
   50% {
@@ -163,7 +174,32 @@ hr {
 }
 
 .vertical-text {
-	transform: rotate(90deg);
-	transform-origin: left top 0;
+  transform: rotate(90deg);
+  transform-origin: left top 0;
   float: left;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dropdown-menu {
+    color: black;
+    background: white;
+  }
+  .precon {
+    background-color: #eee;
+  }
+  body {
+    background-color: #ff0;
+    color: #00f;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .dropdown-menu {
+    color: #00f;
+    /* background: black; */
+  }
+  body {
+    background-color: #ff0;
+    color: #00f;
+  }
 }

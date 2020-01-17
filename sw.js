@@ -16,7 +16,7 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-var CACHE_NAME = "ccfdpc-cache-v2.3";
+var CACHE_NAME = "ccfdpc-cache-v2.5";
 var urlsToCache = [
   "/",
   "/files/styles.css",
@@ -71,7 +71,7 @@ self.addEventListener("fetch", function(event) {
 });
 
 self.addEventListener("activate", function(event) {
-  var cacheWhitelist = ["ccfdpc-cache-v2.3"];
+  var cacheWhitelist = ["ccfdpc-cache"];
 
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
