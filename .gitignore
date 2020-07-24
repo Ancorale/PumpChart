@@ -2,6 +2,7 @@
 .ftpquota
 .htaccess
 .vscode
+.well-known
 
 # Windows image file caches
 Thumbs.db
