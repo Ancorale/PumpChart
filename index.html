@@ -1,223 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CCFD Pump Calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" type="image/ico" href="favicon.ico" />
+    <link rel="stylesheet" href="files/grid.css" />
+    <link rel="stylesheet" href="files/styles.css" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>CCFD Pump Calculator</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-  <link rel="icon" type="image/ico" href="favicon.ico">
-  <link rel="stylesheet" href="files/grid.css">
-  <link rel="stylesheet" href="files/styles.css">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#000000">
-  <meta name="theme-color" content="#00f">
-
-</head>
-<body>
-  <div id="top" class="tac">
-    <h1 class="heading-primary">
-      <span class="heading-primary-main tac">Fire Engine Pump Calculator</span>
-    </h1>
-  </div>
-  <br>
-
-  <div class="container-fluid tac">
-    <div class="dropdown">
-      <button class="btn-sm btn backBlue dropdown-toggle" type="button" id="dropdownMenuButtonNP" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nozzle<br>Pressure</button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" id="masStr">&plus; 80 PSI NP Master Stream &lpar;tip &#8805; 1&frac38;&quot;&rpar;</a>
-        <a class="dropdown-item" id="smBorHan">&plus; 50 PSI NP SB Handline &lpar;tip &#8804; 1&frac14;&quot;&rpar;</a>
-        <a class="dropdown-item" id="fogNoz">&plus; 100 PSI NP Fog Nozzles</a>
-      </div>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon-512x512.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="theme-color" content="#00f" />
+  </head>
+  <body>
+    <div id="top" class="tac">
+      <h1 class="heading-primary">
+        <span class="heading-primary-main tac"
+          >Fire Engine Pump Calculator</span
+        >
+      </h1>
     </div>
+    <br />
 
-    <div class="dropdown">
-      <button class="btn-sm btn backBlue dropdown-toggle" type="button" id="dropdownMenuButtonHS" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hose Size</button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" id="one">&plus; 1&quot; X 150&apos;</a>
-        <a class="dropdown-item" id="one34">&plus; 1&frac34;&quot;  X 50&apos;</a>
-        <a class="dropdown-item" id="one341">&plus; 1&frac34;&quot; X 100&apos;</a>
-        <a class="dropdown-item precon" id="one342">&plus; 1&frac34;&quot;  X 200&apos;</a>
-        <a class="dropdown-item" id="two12">&plus; 2&frac12;&quot; X 50&apos;</a>
-        <a class="dropdown-item" id="two121">&plus; 2&frac12;&quot; X 100&apos;</a>
-        <a class="dropdown-item precon" id="two122">&plus; 2&frac12;&quot; X 200&apos;</a>
-        <a class="dropdown-item" id="five">&plus; 5&quot; X 100&apos;</a>
+    <div class="container-fluid tac">
+      <div class="dropdown">
+        <button
+          class="btn-sm btn backBlue dropdown-toggle"
+          type="button"
+          id="dropdownMenuButtonNP"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Nozzle<br />Pressure
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" id="masStr"
+            >&plus; 80 PSI NP Master Stream &lpar;tip &#8805;
+            1&frac38;&quot;&rpar;</a
+          >
+          <a class="dropdown-item" id="smBorHan"
+            >&plus; 50 PSI NP SB Handline &lpar;tip &#8804;
+            1&frac14;&quot;&rpar;</a
+          >
+          <a class="dropdown-item" id="fogNoz">&plus; 100 PSI NP Fog Nozzles</a>
         </div>
-    </div>
-
-    <div class="dropdown">
-      <button class="btn-sm btn backBlue dropdown-toggle" type="button" id="dropdownMenuButtonGPM" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GPM</button>
-      <div class="dropdown-menu boxRad">
-        <a class="dropdown-item" id="five0">50 GPM</a>
-        <a class="dropdown-item" id="seven0">70 GPM</a>
-        <a class="dropdown-item" id="nine5">95 GPM</a>
-        <a class="dropdown-item" id="one25">125 GPM</a>
-        <a class="dropdown-item" id="one50">150 GPM</a>
-        <a class="dropdown-item" id="two00">200 GPM</a>
-        <a class="dropdown-item" id="two10">210 GPM &lpar;1&quot; SB&rpar;</a>
-        <a class="dropdown-item" id="two50">250 GPM</a>
-        <a class="dropdown-item" id="two65">265 GPM &lpar;1&frac18;&quot; SB&rpar;</a>
-        <a class="dropdown-item" id="three30">330 GPM &lpar;1&frac14;&quot; SB&rpar;</a>
-        <a class="dropdown-item" id="five00">500 GPM &lpar;1&frac38;&quot; MS&rpar;</a>
-        <a class="dropdown-item" id="six00">600 GPM &lpar;1&frac12;&quot; MS&rpar;</a>
-        <a class="dropdown-item" id="eight15">815 GPM &lpar;1&frac34;&quot; MS&rpar;</a>
-        <a class="dropdown-item" id="two">1065 GPM &lpar;2&quot; MS&rpar;</a>
       </div>
-    </div>
 
-    <br>
-
-    <div class="dropdown">
-      <button class="btn-sm btn backBlue dropdown-toggle" type="button" id="dropdownMenuButtonAL" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Apt. Load</button>
-      <div class="dropdown-menu boxRad">
-        <a class="dropdown-item" id="nine5a">95 GPM EA</a>
-        <a class="dropdown-item" id="one25a">125 GPM EA</a>
-        <a class="dropdown-item" id="one50a">150 GPM EA</a>
-        <a class="dropdown-item" id="two00a">200 GPM EA</a>
+      <div class="dropdown">
+        <button
+          class="btn-sm btn backBlue dropdown-toggle"
+          type="button"
+          id="dropdownMenuButtonHS"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Hose Size
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" id="one">&plus; 1&quot; X 150&apos;</a>
+          <a class="dropdown-item" id="one34"
+            >&plus; 1&frac34;&quot; X 50&apos;</a
+          >
+          <a class="dropdown-item" id="one341"
+            >&plus; 1&frac34;&quot; X 100&apos;</a
+          >
+          <a class="dropdown-item precon" id="one342"
+            >&plus; 1&frac34;&quot; X 200&apos;</a
+          >
+          <a class="dropdown-item" id="two12"
+            >&plus; 2&frac12;&quot; X 50&apos;</a
+          >
+          <a class="dropdown-item" id="two121"
+            >&plus; 2&frac12;&quot; X 100&apos;</a
+          >
+          <a class="dropdown-item precon" id="two122"
+            >&plus; 2&frac12;&quot; X 200&apos;</a
+          >
+          <a class="dropdown-item" id="five">&plus; 5&quot; X 100&apos;</a>
+        </div>
       </div>
-    </div>
 
-    <div class="dropdown">
-      <button class="btn-sm btn backBlue dropdown-toggle" type="button" id="dropdownMenuButtonPC" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aerial FL</button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" id="t11">T11 Fog &lpar;&num;13583&rpar;</a>
-        <a class="dropdown-item" id="t11s">T11 SB &lpar;&num;13583&rpar;</a>
-        <a class="dropdown-item" id="t16">T16 Fog &lpar;&num;15708&rpar;</a>
-        <a class="dropdown-item" id="t17">T17 Fog &lpar;&num;13582&rpar;</a>
-        <a class="dropdown-item" id="t17s">T17 SB &lpar;&num;13582&rpar;</a>
-        <a class="dropdown-item" id="t18">T18 Fog &lpar;&num;12421&rpar;</a>
-        <a class="dropdown-item" id="t18s">T18 SB &lpar;&num;12421&rpar;</a>
-        <a class="dropdown-item" id="t22">T22 Fog &lpar;&num;13579&rpar;</a>
+      <div class="dropdown">
+        <button
+          class="btn-sm btn backBlue dropdown-toggle"
+          type="button"
+          id="dropdownMenuButtonGPM"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          GPM
+        </button>
+        <div class="dropdown-menu boxRad">
+          <a class="dropdown-item" id="five0">50 GPM</a>
+          <a class="dropdown-item" id="seven0">70 GPM</a>
+          <a class="dropdown-item" id="nine5">95 GPM</a>
+          <a class="dropdown-item" id="one25">125 GPM</a>
+          <a class="dropdown-item" id="one50">150 GPM</a>
+          <a class="dropdown-item" id="two00">200 GPM</a>
+          <a class="dropdown-item" id="two10">210 GPM &lpar;1&quot; SB&rpar;</a>
+          <a class="dropdown-item" id="two50">250 GPM</a>
+          <a class="dropdown-item" id="two65"
+            >265 GPM &lpar;1&frac18;&quot; SB&rpar;</a
+          >
+          <a class="dropdown-item" id="three30"
+            >330 GPM &lpar;1&frac14;&quot; SB&rpar;</a
+          >
+          <a class="dropdown-item" id="five00"
+            >500 GPM &lpar;1&frac38;&quot; MS&rpar;</a
+          >
+          <a class="dropdown-item" id="six00"
+            >600 GPM &lpar;1&frac12;&quot; MS&rpar;</a
+          >
+          <a class="dropdown-item" id="eight15"
+            >815 GPM &lpar;1&frac34;&quot; MS&rpar;</a
+          >
+          <a class="dropdown-item" id="two">1065 GPM &lpar;2&quot; MS&rpar;</a>
+        </div>
       </div>
-    </div>
 
-    <br>
-    <div id="FL" class="tac bor1s boxRad">Friction<br>Loss</div>
-    <br><br>
+      <br />
 
-    <div class="dropdown ">
-      <button class="btn-sm btn backBlue dropdown-toggle" type="button" id="dropdownMenuButtonSA" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Special<br>Appliances</button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" id="appl">&plus; 10 PSI Appliances flowing &#8805; 350gpm</a>
-        <a class="dropdown-item" id="bliz">&plus; 20 PSI Blitzfire Monitor</a>
-        <a class="dropdown-item" id="stanPip">&plus; 25 PSI Standpipe System</a>
-        <a class="dropdown-item" id="monDek">&plus; 25 PSI Ground Monitor/Deck Gun</a>
-        <a class="dropdown-item" id="siam">2&frac12; Siamese &lpar;2&rpar;</a>
-        <a class="dropdown-item" id="triam">2&frac12; Triamese &lpar;3&rpar; </a>
+      <div class="dropdown">
+        <button
+          class="btn-sm btn backBlue dropdown-toggle"
+          type="button"
+          id="dropdownMenuButtonAL"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Apt. Load
+        </button>
+        <div class="dropdown-menu boxRad">
+          <a class="dropdown-item" id="nine5a">95 GPM EA</a>
+          <a class="dropdown-item" id="one25a">125 GPM EA</a>
+          <a class="dropdown-item" id="one50a">150 GPM EA</a>
+          <a class="dropdown-item" id="two00a">200 GPM EA</a>
+        </div>
       </div>
-    </div>
 
-    <div class="dropdown">
-      <button class="btn-sm btn backBlue dropdown-toggle" type="button" id="dropdownMenuButtonPC" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pressure<br>Constants</button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" id="relPum">&plus; 100 PSI Begins Relay Pumping</a>
-        <a class="dropdown-item" id="aptLoad">&plus; 140 PSI Apt. Load Deploy to WYE</a>
-        <a class="dropdown-item" id="sprink">&plus; 150 PSI Sprinklers w&sol;o pump</a>
+      <div class="dropdown">
+        <button
+          class="btn-sm btn backBlue dropdown-toggle"
+          type="button"
+          id="dropdownMenuButtonPC"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Aerial FL
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" id="t11">T11 Fog &lpar;&num;13583&rpar;</a>
+          <a class="dropdown-item" id="t11s">T11 SB &lpar;&num;13583&rpar;</a>
+          <a class="dropdown-item" id="t16">T16 Fog &lpar;&num;15708&rpar;</a>
+          <a class="dropdown-item" id="t17">T17 Fog &lpar;&num;13582&rpar;</a>
+          <a class="dropdown-item" id="t17s">T17 SB &lpar;&num;13582&rpar;</a>
+          <a class="dropdown-item" id="t18">T18 Fog &lpar;&num;12421&rpar;</a>
+          <a class="dropdown-item" id="t18s">T18 SB &lpar;&num;12421&rpar;</a>
+          <a class="dropdown-item" id="t22">T22 Fog &lpar;&num;13579&rpar;</a>
+        </div>
       </div>
-    </div>
 
-    <br>
-    <div class="dropdown">
-      <button class="btn-sm btn backBlue dropdown-toggle" type="button" id="dropdownMenuButtonEL" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Elevation</button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" id="elUp">Elev UP 1 floor&colon; &plus; 5 PSI per floor &lpar;&minus;1<sup>st</sup>&rpar;</a>
-        <a class="dropdown-item" id="elUp10">Elev UP 10 floors&colon; &plus; 50 PSI</a>
-        <a class="dropdown-item" id="elDn">Elev DOWN 1 floor&colon; &minus; 5 PSI per floor</a>
+      <br />
+      <div id="FL" class="tac bor1s boxRad">Friction<br />Loss</div>
+      <br /><br />
+
+      <div class="dropdown">
+        <button
+          class="btn-sm btn backBlue dropdown-toggle"
+          type="button"
+          id="dropdownMenuButtonSA"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Special<br />Appliances
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" id="appl"
+            >&plus; 10 PSI Appliances flowing &#8805; 350gpm</a
+          >
+          <a class="dropdown-item" id="bliz">&plus; 20 PSI Blitzfire Monitor</a>
+          <a class="dropdown-item" id="stanPip"
+            >&plus; 25 PSI Standpipe System</a
+          >
+          <a class="dropdown-item" id="monDek"
+            >&plus; 25 PSI Ground Monitor/Deck Gun</a
+          >
+          <a class="dropdown-item" id="siam">2&frac12; Siamese &lpar;2&rpar;</a>
+          <a class="dropdown-item" id="triam"
+            >2&frac12; Triamese &lpar;3&rpar;
+          </a>
+        </div>
       </div>
-    </div>
 
-    <br>
-    <button class="btn-sm btn backBlue" type="button" id="highRiseHose">High-Rise<br>Hose Pack</button>
-
-    <div class="dropdown">
-      <button class="btn-sm btn backBlue dropdown-toggle" type="button" id="dropdownMenuButtonFm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Foam</button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item " id="ClassA" data-text="Class A~Common Combustibles~Fire Attack: 0.3-0.5%~Exposures: 1.0%~Overhaul: 0.1%" >Class A</a>
-        <a class="dropdown-item" id="ClassB" data-text="Class B~Flammable/Combustible Liquids~Hydrocarbons: 3.0%~(petroleum based - float on water)~Polar Solvents: 6.0%~(alcohol, acetone, esters mix w/H2O)">Class B</a>
-        <a class="dropdown-item" id="Eductor" data-text="Eductor~95 or 125 GPM~(nozzle MUST match eductor)~200 psi EP &commat; inlet;~150’ of 1 ¾” MAX after eductor">Eductor</a>
-        <a class="dropdown-item" id="proPak" data-text="ProPak~12 GPM @ 100 psi">ProPak</a>
+      <div class="dropdown">
+        <button
+          class="btn-sm btn backBlue dropdown-toggle"
+          type="button"
+          id="dropdownMenuButtonPC"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Pressure<br />Constants
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" id="relPum"
+            >&plus; 100 PSI Begins Relay Pumping</a
+          >
+          <a class="dropdown-item" id="aptLoad"
+            >&plus; 140 PSI Apt. Load Deploy to WYE</a
+          >
+          <a class="dropdown-item" id="sprink"
+            >&plus; 150 PSI Sprinklers w&sol;o pump</a
+          >
+        </div>
       </div>
-    </div>
 
-    <button type="button" class="btn btn-primary btn-sm backBlue" data-toggle="modal" data-target="#exampleModalCenter">Like<br>Volumes</button>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="smwrapper">
+      <br />
+      <div class="dropdown">
+        <button
+          class="btn-sm btn backBlue dropdown-toggle"
+          type="button"
+          id="dropdownMenuButtonEL"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Elevation
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" id="elUp"
+            >Elev UP 1 floor&colon; &plus; 5 PSI per floor
+            &lpar;&minus;1<sup>st</sup>&rpar;</a
+          >
+          <a class="dropdown-item" id="elUp10"
+            >Elev UP 10 floors&colon; &plus; 50 PSI</a
+          >
+          <a class="dropdown-item" id="elDn"
+            >Elev DOWN 1 floor&colon; &minus; 5 PSI per floor</a
+          >
+        </div>
+      </div>
+
+      <br />
+      <button class="btn-sm btn backBlue" type="button" id="highRiseHose">
+        High-Rise<br />Hose Pack
+      </button>
+
+      <div class="dropdown">
+        <button
+          class="btn-sm btn backBlue dropdown-toggle"
+          type="button"
+          id="dropdownMenuButtonFm"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Foam
+        </button>
+        <div class="dropdown-menu">
+          <a
+            class="dropdown-item"
+            id="ClassA"
+            data-text="Class A~Common Combustibles~Fire Attack: 0.3-0.5%~Exposures: 1.0%~Overhaul: 0.1%"
+            >Class A</a
+          >
+          <a
+            class="dropdown-item"
+            id="ClassB"
+            data-text="Class B~Flammable/Combustible Liquids~Hydrocarbons: 3.0%~(petroleum based - float on water)~Polar Solvents: 6.0%~(alcohol, acetone, esters mix w/H2O)"
+            >Class B</a
+          >
+          <a
+            class="dropdown-item"
+            id="Eductor"
+            data-text="Eductor~95 or 125 GPM~(nozzle MUST match eductor)~200 psi EP &commat; inlet;~150’ of 1 ¾” MAX after eductor"
+            >Eductor</a
+          >
+          <a
+            class="dropdown-item"
+            id="proPak"
+            data-text="ProPak~12 GPM @ 100 psi"
+            >ProPak</a
+          >
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-primary btn-sm backBlue"
+        data-toggle="modal"
+        data-target="#exampleModalCenter"
+      >
+        Like<br />Volumes
+      </button>
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="smwrapper">
                 <h5 class="one219 statPres">Static Pressure</h5>
-              <div class="three612" >
-                Like Volumes
+                <div class="three612">Like Volumes</div>
+                <div class="two323 bor1s backYel">PSI</div>
+                <div class="two334 bor1s backYel">90</div>
+                <div class="three434 bor1s">80 psi</div>
+                <div class="four534 bor1s">75 psi</div>
+                <div class="five634 bor1s">70 psi</div>
+                <div class="two345 bor1s backYel">80</div>
+                <div class="three445 bor1s">75 psi</div>
+                <div class="four545 bor1s">70 psi</div>
+                <div class="five645 bor1s">60 psi</div>
+                <div class="two356 bor1s backYel">70</div>
+                <div class="three456 bor1s">65 psi</div>
+                <div class="four556 bor1s">60 psi</div>
+                <div class="five656 bor1s">55 psi</div>
+                <div class="two367 bor1s backYel">60</div>
+                <div class="three467 bor1s">55 psi</div>
+                <div class="four567 bor1s">50 psi</div>
+                <div class="five667 bor1s">45 psi</div>
+                <div class="two378 bor1s backYel">50</div>
+                <div class="three478 bor1s">45 psi</div>
+                <div class="four578 bor1s">40 psi</div>
+                <div class="five678 bor1s">35 psi</div>
+                <div class="two389 bor1s backYel">40</div>
+                <div class="three489 bor1s">35 psi</div>
+                <div class="four589 bor1s">30 psi</div>
+                <div class="five689 bor1s">25 psi</div>
+                <div class="three423 bor1s">3</div>
+                <div class="four523 bor1s">2</div>
+                <div class="five623 bor1s">1</div>
               </div>
-              <div class="two323 bor1s backYel">PSI</div>
-              <div class="two334 bor1s backYel">90</div>
-              <div class="three434 bor1s">80 psi</div>
-              <div class="four534 bor1s">75 psi</div>
-              <div class="five634 bor1s">70 psi</div>
-              <div class="two345 bor1s backYel">80</div>
-              <div class="three445 bor1s">75 psi</div>
-              <div class="four545 bor1s">70 psi</div>
-              <div class="five645 bor1s">60 psi</div>
-              <div class="two356 bor1s backYel">70</div>
-              <div class="three456 bor1s">65 psi</div>
-              <div class="four556 bor1s">60 psi</div>
-              <div class="five656 bor1s">55 psi</div>
-              <div class="two367 bor1s backYel">60</div>
-              <div class="three467 bor1s">55 psi</div>
-              <div class="four567 bor1s">50 psi</div>
-              <div class="five667 bor1s">45 psi</div>
-              <div class="two378 bor1s backYel">50</div>
-              <div class="three478 bor1s">45 psi</div>
-              <div class="four578 bor1s">40 psi</div>
-              <div class="five678 bor1s">35 psi</div>
-              <div class="two389 bor1s backYel">40</div>
-              <div class="three489 bor1s">35 psi</div>
-              <div class="four589 bor1s">30 psi</div>
-              <div class="five689 bor1s">25 psi</div>
-              <div class="three423 bor1s">3</div>
-              <div class="four523 bor1s">2</div>
-              <div class="five623 bor1s">1</div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
         </div>
       </div>
     </div>
 
-  </div>
-
-  <hr>
-  <p id="whats" class="tac">Items</p>
-  <hr>
-  <div id="botBox" class="container-fluid tac">
-    <div id="HL" class="tac bor1s boxRad">HL</div>
-    of
-    <div id="HD" class="tac bor1s boxRad">HD</div>
-    at
-    <div id="gpm" class="tac bor1s boxRad">GPM</div>
-    <br><br> Engine Pressure
-    <div id="EP" class="tac bor1s boxRad">EP</div>
-  </div>
-  <div class="container-fluid tac">
-    <br>
-    <button id="reset" class="btn backBlue" onclick="location.reload(true)">Reset</button>
-  </div>
-  <hr>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="files/script.js"></script>
-  <script type="text/javascript" src="/sw.js"></script>
-</body>
-
+    <hr />
+    <p id="whats" class="tac">Items</p>
+    <hr />
+    <div id="botBox" class="container-fluid tac">
+      <div id="HL" class="tac bor1s boxRad">HL</div>
+      of
+      <div id="HD" class="tac bor1s boxRad">HD</div>
+      at
+      <div id="gpm" class="tac bor1s boxRad">GPM</div>
+      <br /><br />
+      Engine Pressure
+      <div id="EP" class="tac bor1s boxRad">EP</div>
+    </div>
+    <div class="container-fluid tac">
+      <br />
+      <button id="reset" class="btn backBlue" onclick="location.reload(true)">
+        Reset
+      </button>
+    </div>
+    <hr />
+    <footer class="tac">
+      <div>&copy;Ancorale Computer Design 2023</div>
+      <br />
+      <div><a href="/files/privacy.html">Privacy Policy</a></div>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="files/script.js"></script>
+    <script type="text/javascript" src="/sw.js"></script>
+  </body>
 </html>

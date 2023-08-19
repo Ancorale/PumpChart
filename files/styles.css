@@ -83,6 +83,12 @@ hr {
   border-width: 8px;
 }
 
+footer div,
+.center {
+  display: flex;
+  justify-content: center;
+}
+
 .precon {
   background-color: #eef;
 }
