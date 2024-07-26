@@ -1,19 +1,28 @@
-{   "name": "Fire Engine Pump Chart",
-    "short_name": "CCFDPC",
-    "icons": [
-        {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ],
-    "start_url": "/?utm_source=a2hs",
-    "theme_color": "#000000",
-    "background_color": "#000000",
-    "display": "standalone"
+{
+  "name": "Fire Engine Pump Chart",
+  "short_name": "CCFDPC",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?utm_source=a2hs",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "protocol_handlers": [{ "protocol": "mailto", "url": "/newEmail?to=%s" }],
+  "orientation": "portrait",
+  "id": "/?homescreen=1",
+  "display": "standalone",
+  "description": "The fire pump chart has been condensed into a single page app that uses dropdown menus to calculate GPM. No need to input any numbers, everything is listed in an easy to use format that does all the calculations for you. All input is listed below the dropdowns for easy reference and a final length/diameter/GPM computation is returned for engine pressure. For informational purposes only, not intended to replace expert determinations.",
+  "dir": "ltr",
+  "lang": "en-US",
+  "scope": "https://ccfdpc.com/",
+  "display_override": ["window-controls-overlay", "standalone", "browser"]
 }
