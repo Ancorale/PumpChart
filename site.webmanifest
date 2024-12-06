@@ -24,5 +24,12 @@
   "dir": "ltr",
   "lang": "en-US",
   "scope": "https://ccfdpc.com/",
-  "display_override": ["window-controls-overlay", "standalone", "browser"]
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "edge_side_panel": {
+    "preferred_width": 0
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred"
 }
